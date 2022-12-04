@@ -16,11 +16,19 @@ connection.on("ReceiveMessage", (user, message) => {
 
 connection.start().then(() => {
     document.getElementById("sendButton").disabled = false;
+    document.getElementById("connectionId").innerText = connection.connectionId;
 }).catch((err) => console.error(err.toString()));
 
-document.getElementById("sendButton").addEventListener("click", (event) => {
-    const user = document.getElementById("userInput").value;
-    const message = document.getElementById("messageInput").value;
-    connection.invoke("SendMessage", user, message).catch((err) => console.error(err.toString()));
-    event.preventDefault();
+document.getElementById("sendButton").addEventListener("click", async (event) => {
+    try {
+        event.preventDefault();
+        const user = document.getElementById("userInput").value;
+        const message = document.getElementById("messageInput").value;
+        const sendTo = document.getElementById("sendToInput").value;
+        const ret = await connection.invoke("SendMessage", sendTo, user, message);
+        console.log(ret);
+    } catch (err) {
+        console.error(err.toString());
+    }
+
 });
