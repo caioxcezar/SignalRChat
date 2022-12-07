@@ -25,3 +25,17 @@ C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\obj\Debug\net6.0\SignalRCha
 C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\obj\Debug\net6.0\SignalRChat.genruntimeconfig.cache
 C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\obj\Debug\net6.0\ref\SignalRChat.dll
 C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\bin\Debug\net6.0\libman.json
+C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\bin\Debug\net6.0\System.Security.Permissions.dll
+C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\obj\Debug\net6.0\staticwebassets\msbuild.SignalRChat.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\obj\Debug\net6.0\staticwebassets\msbuild.build.SignalRChat.props
+C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.SignalRChat.props
+C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.SignalRChat.props
+C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\obj\Debug\net6.0\SignalRChat.csproj.CopyComplete

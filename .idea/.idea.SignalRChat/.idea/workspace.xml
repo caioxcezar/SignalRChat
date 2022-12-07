@@ -9,9 +9,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f375b3a7-de35-4524-8869-d6ed4858bcb3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/SignalRChat/wwwroot/js/chat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SignalRChat/Controllers/LoginController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SignalRChat/Models/DTO/LoginDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SignalRChat/Models/DTO/TokenDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SignalRChat/Models/User.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SignalRChat/Pages/Login/Index.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SignalRChat/Pages/Login/Index.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SignalRChat/Repositories/UserRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SignalRChat/Services/ConfigurationService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SignalRChat/Services/TokenService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SignalRChat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SignalRChat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignalRChat/Pages/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/Pages/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/signalrchat.metadata.v5.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/signalrchat.projects.v5.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/SignalRChat/DesignTimeBuild/.dtbcache.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/SignalRChat/FileContentIndex/3777b8c4-c5dc-41ee-af6b-1c2b65005a6b.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/SignalRChat/FileContentIndex/d38361ac-732c-4d80-b89b-4a769703b7c5.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/SignalRChat/FileContentIndex/f79f39ca-918a-4cc0-a814-678789d3fbfd.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/SignalRChat/FileContentIndex/read.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/SignalRChat/v17/.futdcache.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/SignalRChat/v17/.suo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/Hubs/ChatHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/Hubs/ChatHub.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/Pages/Index.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/Pages/Index.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/SignalRChat.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/SignalRChat.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/bin/Debug/net6.0/SignalRChat.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/bin/Debug/net6.0/SignalRChat.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/bin/Debug/net6.0/SignalRChat.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/bin/Debug/net6.0/SignalRChat.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/bin/Debug/net6.0/SignalRChat.exe" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/bin/Debug/net6.0/SignalRChat.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/bin/Debug/net6.0/SignalRChat.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/bin/Debug/net6.0/SignalRChat.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/bin/Debug/net6.0/SignalRChat.staticwebassets.runtime.json" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/bin/Debug/net6.0/SignalRChat.staticwebassets.runtime.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/bin/Debug/net6.0/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/bin/Debug/net6.0/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/SignalRChat.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/SignalRChat.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/SignalRChat.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/SignalRChat.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/SignalRChat.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/SignalRChat.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/SignalRChat.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/SignalRChat.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/SignalRChat.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/SignalRChat.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/SignalRChat.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/SignalRChat.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/SignalRChat.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/SignalRChat.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/ref/SignalRChat.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/ref/SignalRChat.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/refint/SignalRChat.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/refint/SignalRChat.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/staticwebassets.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/staticwebassets.build.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/staticwebassets.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/Debug/net6.0/staticwebassets.development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/SignalRChat.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/SignalRChat.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/SignalRChat.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/SignalRChat.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/obj/staticwebassets.pack.sentinel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignalRChat/wwwroot/js/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/SignalRChat/wwwroot/js/chat.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +73,18 @@
       </list>
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/198a6261cebc324728dcc4c178edc5f2894123f711722c80e8557cbfd27651/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/28e8d9f7306d438fe36495b8ea4c53836e916a3fa0d196a55c07bf341e174/NotFoundResult.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b4d7b474f61fbac932a1967b88c725b6f39b833bb709b282f6a80f09e3a6d/RazorPagesEndpointRouteBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d5f92893b4e362502fc4e02cf758f9ed02fdab36fa5d36b75d31416bdb3596/ControllerEndpointRouteBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fd4b12b3b09eb75d541efd2e12445569c7a57d8dc3745453ff2aaa61df28b1e/Hub.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Toolset" />
   </component>
   <component name="ProjectId" id="2INGDl7CvnWXa7DgMXH2ZLQ193x" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -89,6 +147,19 @@
       <updated>1670014511317</updated>
       <workItem from="1670014515633" duration="1357000" />
       <workItem from="1670016731943" duration="214000" />
+      <workItem from="1670168708745" duration="3682000" />
+      <workItem from="1670173735511" duration="2441000" />
+      <workItem from="1670185448971" duration="3051000" />
+      <workItem from="1670189051816" duration="178000" />
+      <workItem from="1670189235058" duration="22000" />
+      <workItem from="1670189670103" duration="2401000" />
+      <workItem from="1670192129196" duration="7752000" />
+      <workItem from="1670371358970" duration="204000" />
+      <workItem from="1670371626126" duration="636000" />
+      <workItem from="1670373955500" duration="2049000" />
+      <workItem from="1670376061746" duration="459000" />
+      <workItem from="1670376548174" duration="1944000" />
+      <workItem from="1670430742418" duration="8431000" />
     </task>
     <task id="LOCAL-00001" summary="Commit inicial">
       <created>1670015833651</created>
@@ -118,7 +189,35 @@
       <option name="project" value="LOCAL" />
       <updated>1670016331820</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="SignalR frontend">
+      <created>1670169292567</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1670169292567</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Setting up signalR message test">
+      <created>1670169326223</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1670169326223</updated>
+    </task>
+    <task id="LOCAL-00007" summary=".gitignore">
+      <created>1670173807180</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1670173807180</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Sending message to a ConnectionId">
+      <created>1670173962113</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1670173962113</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,25 +242,10 @@
     <MESSAGE value="Adicionando SignalR no lado do cliente" />
     <MESSAGE value="Criando classe Hub para gerenciar conexões, grupos e sistemas de mensagens." />
     <MESSAGE value="Adicionando SignalR ao ASP.NET" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adicionando SignalR ao ASP.NET" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/SignalRChat/Hubs/ChatHub.cs</url>
-          <line>8</line>
-          <properties documentPath="C:\Users\caioc\RiderProjects\SignalRChat\SignalRChat\Hubs\ChatHub.cs" initialLine="8" containingFunctionPresentation="method 'SendMessage'">
-            <startOffsets>
-              <option value="171" />
-            </startOffsets>
-            <endOffsets>
-              <option value="232" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="SignalR frontend" />
+    <MESSAGE value="Setting up signalR message test" />
+    <MESSAGE value=".gitignore" />
+    <MESSAGE value="Sending message to a ConnectionId" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sending message to a ConnectionId" />
   </component>
 </project>

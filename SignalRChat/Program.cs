@@ -1,10 +1,34 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using SignalRChat.Hubs;
+using SignalRChat.Repositories;
+using SignalRChat.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+ConfigurationService.SetInstance(builder.Configuration);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddTransient(typeof(ChatRepository), typeof(ChatRepository));
 builder.Services.AddSignalR();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(jwt =>
+{
+    var key = Encoding.ASCII.GetBytes(builder.Configuration["Secret"]);
+    jwt.RequireHttpsMetadata = false;
+    jwt.SaveToken = true;
+    jwt.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
 
 var app = builder.Build();
 
@@ -18,12 +42,15 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseAuthentication();
 app.UseRouting();
-
 app.UseAuthorization();
-
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 app.MapRazorPages();
+app.MapControllerRoute(name: "default", pattern:"{controller=Login}/{action=Index}/{id?}");
 app.MapHub<ChatHub>("/chatHub");
 
 app.Run();

@@ -1,34 +1,60 @@
 ﻿"use strict";
 
-const connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+const getContacts = async () => {
+    const { token } = JSON.parse(localStorage.getItem('token'));
+    const cboSendTo = document.getElementById("cboSendTo");
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", `Bearer ${token}`);
 
-//Disable the send button until connection is established.
-document.getElementById("sendButton").disabled = true;
+    const requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
 
-connection.on("ReceiveMessage", (user, message) => {
+    const response = await fetch(`${window.location.origin}/chat/getall`, requestOptions)
+    if(response.status > 200) return;
+    const json = await response.json();
+    for(const option of json) {
+        const element = document.createElement("option");
+        element.value = option.name;
+        element.text = option.name;
+        cboSendTo.add(element);
+    }
+}
+
+const addMessage = (user, message) => {
     const li = document.createElement("li");
     document.getElementById("messagesList").appendChild(li);
-    // We can assign user-supplied strings to an element's textContent because it
-    // is not interpreted as markup. If you're assigning in any other way, you 
-    // should be aware of possible script injection concerns.
-    li.textContent = `${user} says ${message}`;
-});
+    li.textContent = `${user}: ${message}`;
+}
 
-connection.start().then(() => {
-    document.getElementById("sendButton").disabled = false;
-    document.getElementById("connectionId").innerText = connection.connectionId;
-}).catch((err) => console.error(err.toString()));
+(async () => {
+    const res = localStorage.getItem('token');
+    if(!res) return window.location.replace(`${window.location.origin}/login`);
+    const { token } = JSON.parse(res);
+    getContacts();
 
-document.getElementById("sendButton").addEventListener("click", async (event) => {
-    try {
+    const connection = new signalR.HubConnectionBuilder().withUrl("/chatHub", {
+        headers: { "Authorization": `Bearer ${token}` }
+    }).build();
+
+    //Disable the send button until connection is established.
+    document.getElementById("sendButton").disabled = true;
+
+    connection.on("ReceiveMessage", addMessage);
+
+    connection.start().then(() => {
+        document.getElementById("sendButton").disabled = false;
+    }).catch((err) => console.error(err.toString()));
+
+    document.getElementById("sendButton").addEventListener("click", (event) => {
         event.preventDefault();
-        const user = document.getElementById("userInput").value;
         const message = document.getElementById("messageInput").value;
-        const sendTo = document.getElementById("sendToInput").value;
-        const ret = await connection.invoke("SendMessage", sendTo, user, message);
-        console.log(ret);
-    } catch (err) {
-        console.error(err.toString());
-    }
+        const sendTo = document.getElementById("cboSendTo").value;
+        const { name } = JSON.parse(localStorage.getItem('token'));
+        connection.invoke("SendMessage", sendTo, message).then(() => addMessage(name, message)).catch((err) => console.error(err.toString()));
+    });
+})();
 
-});

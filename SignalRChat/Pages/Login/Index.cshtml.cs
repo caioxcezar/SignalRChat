@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace SignalRChat.Pages.Chat;
+namespace SignalRChat.Pages.LogIn;
 
 public class Index : PageModel
 {
