@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "t8Hk4UT3nonTOYMDCaMGssLPEowpgOUBWlzyUYzP2mg=",
+  "Hash": "ZScc5aMiagl4BHdRigGBXY5Fhj7Zm6wvqFBRSFMqLpQ=",
   "Source": "SignalRChat",
   "BasePath": "_content/SignalRChat",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\chat.js"
+    },
+    {
+      "Identity": "C:\\Users\\caioc\\RiderProjects\\SignalRChat\\SignalRChat\\wwwroot\\js\\fetch.js",
+      "SourceId": "SignalRChat",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\caioc\\RiderProjects\\SignalRChat\\SignalRChat\\wwwroot\\",
+      "BasePath": "_content/SignalRChat",
+      "RelativePath": "js/fetch.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\fetch.js"
     },
     {
       "Identity": "C:\\Users\\caioc\\RiderProjects\\SignalRChat\\SignalRChat\\wwwroot\\js\\login.js",

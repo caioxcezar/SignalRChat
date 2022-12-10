@@ -6,7 +6,7 @@ using SignalRChat.Models;
 
 namespace SignalRChat.Services;
 
-public class TokenService
+public static class TokenService
 {
     public static string GenerateToken(User user)
     {
@@ -16,7 +16,8 @@ public class TokenService
         {
             Subject = new ClaimsIdentity(new[]
             {
-                new Claim(ClaimTypes.Name, user.NetworkCredential.UserName),
+                new Claim(ClaimTypes.GivenName, user.Name),
+                new Claim(ClaimTypes.Name, user.Login),
                 new Claim(ClaimTypes.Role, user.Role)
             }),
             Expires = DateTime.UtcNow.AddHours(2),

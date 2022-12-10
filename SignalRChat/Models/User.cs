@@ -1,18 +1,26 @@
-﻿using System.Net;
-using System.Security;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using SignalRChat.Models.DTO;
 
 namespace SignalRChat.Models;
 
 public class User
 {
-    public User(int id, NetworkCredential networkCredential, string role)
-    {
-        Id = id;
-        NetworkCredential = networkCredential;
-        Role = role;
-    }
+    [Key]
+    [Column(TypeName = "nvarchar(20)")]
+    public string Login { get; set; }
 
-    public int Id { get; set; }
-    public NetworkCredential NetworkCredential { get; set; }
-    public string Role { get; set; }
+    [Column(TypeName = "nvarchar(250)")] public string Name { get; set; }
+    [Column(TypeName = "nvarchar(50)")] public string Password { get; set; }
+    [Column(TypeName = "varchar(100)")] public string Role { get; set; }
+    [Column] public DateTime Created { get; set; }
+    [Column] public DateTime Updated { get; set; }
+
+    public static User Build(UserDTO user) => new()
+    {
+        Login = user.Login,
+        Name = user.Name,
+        Password = user.Password,
+        Role = user.Role
+    };
 }

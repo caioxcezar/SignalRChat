@@ -1,22 +1,14 @@
 ﻿"use strict";
 
+import {authorizedRequest} from "./fetch.js";
+
 const getContacts = async () => {
-    const { token } = JSON.parse(localStorage.getItem('token'));
     const cboSendTo = document.getElementById("cboSendTo");
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", `Bearer ${token}`);
 
-    const requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow'
-    };
-
-    const response = await fetch(`${window.location.origin}/chat/getall`, requestOptions)
-    if(response.status > 200) return;
+    const response = await authorizedRequest(`${window.location.origin}/chat/getall`, "GET");
+    if (response.status > 200) return;
     const json = await response.json();
-    for(const option of json) {
+    for (const option of json) {
         const element = document.createElement("option");
         element.value = option.name;
         element.text = option.name;
@@ -32,12 +24,12 @@ const addMessage = (user, message) => {
 
 (async () => {
     const res = localStorage.getItem('token');
-    if(!res) return window.location.replace(`${window.location.origin}/login`);
-    const { token } = JSON.parse(res);
+    if (!res) return window.location.replace(`${window.location.origin}/login`);
+    const {token} = JSON.parse(res);
     getContacts();
 
     const connection = new signalR.HubConnectionBuilder().withUrl("/chatHub", {
-        headers: { "Authorization": `Bearer ${token}` }
+        headers: {"Authorization": `Bearer ${token}`}
     }).build();
 
     //Disable the send button until connection is established.
@@ -53,7 +45,7 @@ const addMessage = (user, message) => {
         event.preventDefault();
         const message = document.getElementById("messageInput").value;
         const sendTo = document.getElementById("cboSendTo").value;
-        const { name } = JSON.parse(localStorage.getItem('token'));
+        const {name} = JSON.parse(localStorage.getItem('token'));
         connection.invoke("SendMessage", sendTo, message).then(() => addMessage(name, message)).catch((err) => console.error(err.toString()));
     });
 })();

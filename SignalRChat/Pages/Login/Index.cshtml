@@ -18,23 +18,23 @@
         <div class="col-6" id="error"></div>
     </div>
     <div class="row">
-        <div class="col-2">Name: </div>
+        <div class="col-2">Login: </div>
         <div class="col-4">
-            <input type="text" id="nameInput"/>
+            <input type="text" id="loginInput"/>
         </div>
     </div>
     <div class="row">
         <div class="col-2">Password: </div>
         <div class="col-4">
-            <input type="text" id="passwordInput"/>
+            <input type="password" id="passwordInput"/>
         </div>
     </div>
     <div class="row">
         <div class="col-6">
-            <input type="button" id="sendButton" value="Log In"/>
+            <button onclick="login()" id="sendButton">Log In</button>
         </div>
     </div>
 </div>
 </body>
-<script src="~/js/login.js"></script>
+<script type="module" src="~/js/login.js"></script>
 </html>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using SignalRChat.Repositories;
 
@@ -15,8 +16,8 @@ public class ChatHub : Hub
 
     public override Task OnConnectedAsync()
     {
-        var user = Context.User!.Identity!.Name!;
-        _chatRepository.Add(new() { Name = user, ConnectionId = Context.ConnectionId });
+        var login = Context.User!.Identity!.Name!;
+        _chatRepository.Add(new() { Login = login, ConnectionId = Context.ConnectionId });
         return base.OnConnectedAsync();
     }
 
@@ -24,6 +25,7 @@ public class ChatHub : Hub
     {
         var chat = _chatRepository.Get(sendTo);
         if (chat == null) throw new NotImplementedException("TODO Salvar mensagem para ser exibida depois");
-        await Clients.Client(chat.ConnectionId!).SendAsync("ReceiveMessage", Context.User!.Identity!.Name!, message);
+        var user = ((ClaimsIdentity)Context.User!.Identity!).FindFirst(ClaimTypes.GivenName)!.Value;
+        await Clients.Client(chat.ConnectionId).SendAsync("ReceiveMessage", user, message);
     }
 }

@@ -1,6 +1,7 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using SignalRChat.Contexts;
 using SignalRChat.Hubs;
 using SignalRChat.Repositories;
 using SignalRChat.Services;

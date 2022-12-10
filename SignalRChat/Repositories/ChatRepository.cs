@@ -1,16 +1,32 @@
-﻿using SignalRChat.Models;
+﻿using SignalRChat.Contexts;
+using SignalRChat.Models;
 
 namespace SignalRChat.Repositories;
 
 public class ChatRepository
 {
-    private static readonly List<ChatUser> Users = new();
-    public List<ChatUser> GetAvailable(string username) => Users.FindAll(chat => chat.Name != username);
-    public ChatUser? Get(string username) => Users.Find(chat => chat.Name == username);
+    public IEnumerable<ChatUser> GetAvailable(string login) {
+        using var dbContext = new DataContext();
+        return dbContext.ChatUsers.Where(chat => chat.Login != login).ToList();
+    }
+    public ChatUser? Get(string login) {
+        using var dbContext = new DataContext();
+        return dbContext.ChatUsers.FirstOrDefault(chat => chat.Login == login);
+    }
     public void Add(ChatUser chatUser)
     {
-        var old = Users.Find(chat => chat.Name == chatUser.Name);
-        if (old != null) old.ConnectionId = chatUser.ConnectionId;
-        else Users.Add(chatUser);
+        using var dbContext = new DataContext();
+        var old = dbContext.ChatUsers.FirstOrDefault(chat => chat.Login == chatUser.Login);
+        if (old != null)
+        {
+            old.ConnectionId = chatUser.ConnectionId;
+            old.Updated = DateTime.Now;
+        }
+        else
+        {
+            chatUser.Created = DateTime.Now;
+            dbContext.ChatUsers.Add(chatUser);
+        }
+        dbContext.SaveChanges();
     }
 }
