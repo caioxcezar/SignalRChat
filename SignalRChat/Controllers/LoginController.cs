@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using SignalRChat.Models.DTO;
 using SignalRChat.Repositories;
 using SignalRChat.Services;
@@ -9,26 +11,43 @@ namespace SignalRChat.Controllers;
 [Route("api")]
 public class LoginController : Controller
 {
+
     [HttpPost]
     [Route("login")]
-    public object Authenticate([FromBody]LoginDTO login)
+    public object Authenticate([FromBody] LoginDTO login)
     {
         try
         {
             if (login.Login == null || login.Password == null) return new NotFoundResult();
             var user = UserRepository.Get(login.Login, login.Password);
-            var token = TokenService.GenerateToken(user);
+            var tokenService = new TokenService(user);
+            var token = tokenService.GenerateToken();
+            user.RefreshToken = Guid.NewGuid().ToString();
+            UserRepository.Add(user);
+
             return new TokenDTO
             {
-                Name = user.Name,
+                ValidTo = tokenService.SecuryToken!.ValidTo,
                 Role = user.Role,
-                Token = token
+                Token = token,
+                RefreshToken = user.RefreshToken
             };
         }
         catch (InvalidOperationException)
         {
-            return new NotFoundResult();
+            return new BadRequestResult();
         }
+    }
+
+    [HttpPost]
+    [Route("refresh")]
+    [Authorize]
+    public object Refresh([FromBody] string refresh) {
+        var login = User.Identity!.Name!;
+        var user = UserRepository.Get(login);
+        if (user == null) return new BadRequestResult();
+        if (user.RefreshToken != refresh) return new BadRequestResult();
+        return Authenticate(new() { Login = user.Login, Password = user.Password });
     }
 
     [HttpGet]
@@ -42,5 +61,5 @@ public class LoginController : Controller
     [HttpGet]
     [Route("authenticated")]
     [Authorize]
-    public string Authenticated() => String.Format("Autenticado - {0}", User.Identity.Name);
+    public string Authenticated() => String.Format("Authenticated - {0}", User.Identity!.Name);
 }

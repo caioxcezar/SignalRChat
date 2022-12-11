@@ -5,9 +5,11 @@ import Stack from "react-bootstrap/Stack";
 import Form from "react-bootstrap/Form";
 import { request } from "../../module/fetch";
 import { warning, error, sucess, info } from "../../module/toast";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState("");
@@ -30,7 +32,7 @@ const Register = () => {
       await request(`login/register`, "POST", body);
       if (request.status > 200) throw "Login invalido";
       sucess("Successfully registered");
-      redirect(`login`);
+      navigate(`/`);
     } catch (e) {
         error(`Não foi possível logar. ${e}`);
     }

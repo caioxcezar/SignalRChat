@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rmu+JfS+wXFQRaqamC7IASCARY4khoMPkv0wm20HKYw=",
+  "Hash": "RY58EjUCnr5cVzr1dUsCXAyC+dJRuReYiBBNcPjQiXk=",
   "Source": "SignalRChat",
   "BasePath": "_content/SignalRChat",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "SignalRChat\\wwwroot",
       "Source": "SignalRChat",
-      "ContentRoot": "C:\\Users\\caioc\\RiderProjects\\SignalRChat\\SignalRChat\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\caioc\\Source\\Repos\\caioxcezar\\SignalRChat\\SignalRChat\\wwwroot\\",
       "BasePath": "_content/SignalRChat",
       "Pattern": "**"
     }

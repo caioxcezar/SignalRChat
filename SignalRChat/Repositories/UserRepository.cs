@@ -11,6 +11,12 @@ public static class UserRepository
         return dbContext.Users.First(user => user.Login == login && user.Password == password);
     }
 
+    public static User Get(string login)
+    {
+        using var dbContext = new DataContext();
+        return dbContext.Users.First(user => user.Login == login);
+    }
+
     public static bool LoginIsAvailable(string login)
     {
         using var dbContext = new DataContext();

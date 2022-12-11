@@ -27,4 +27,12 @@ const authorizedRequest = async (
   });
 };
 
-export { request, authorizedRequest };
+const refreshToken = async () => {
+  const { refreshToken } = JSON.parse(localStorage.getItem("token"));
+  const response = await authorizedRequest("refresh", refreshToken);
+  if (response.status > 200) throw "Credencial invalida";
+  const json = await response.json();
+  localStorage.setItem("token", JSON.stringify(json));
+};
+
+export { request, authorizedRequest, refreshToken };

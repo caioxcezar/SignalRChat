@@ -21,6 +21,13 @@ public class ChatHub : Hub
         return base.OnConnectedAsync();
     }
 
+    public override Task OnDisconnectedAsync(Exception? exception)
+    {
+        var login = Context.User!.Identity!.Name!;
+        _chatRepository.Remove(login);
+        return base.OnDisconnectedAsync(exception);
+    }
+
     public async Task SendMessage(string sendTo, string message)
     {
         var chat = _chatRepository.Get(sendTo);

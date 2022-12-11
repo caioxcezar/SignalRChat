@@ -6,6 +6,7 @@ module.exports = function (app) {
   const appProxy = createProxyMiddleware(context, {
     target: config.server,
     secure: false,
+    ws: true
   });
 
   app.use(appProxy);

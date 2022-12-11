@@ -6,9 +6,15 @@ using SignalRChat.Models;
 
 namespace SignalRChat.Services;
 
-public static class TokenService
+public class TokenService
 {
-    public static string GenerateToken(User user)
+    private User User { get; set; }
+    public SecurityToken? SecuryToken { get; private set; }
+    public TokenService(User user)
+    {
+        User = user;
+    }
+    public string GenerateToken()
     {
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = Encoding.ASCII.GetBytes(ConfigurationService.Instance.GetValue("Secret"));
@@ -16,14 +22,14 @@ public static class TokenService
         {
             Subject = new ClaimsIdentity(new[]
             {
-                new Claim(ClaimTypes.GivenName, user.Name),
-                new Claim(ClaimTypes.Name, user.Login),
-                new Claim(ClaimTypes.Role, user.Role)
+                new Claim(ClaimTypes.GivenName, User.Name),
+                new Claim(ClaimTypes.Name, User.Login),
+                new Claim(ClaimTypes.Role, User.Role)
             }),
             Expires = DateTime.UtcNow.AddHours(2),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-        return tokenHandler.WriteToken(token);
+        SecuryToken = tokenHandler.CreateToken(tokenDescriptor);
+        return tokenHandler.WriteToken(SecuryToken);
     }
 }

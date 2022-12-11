@@ -1,4 +1,5 @@
-﻿using SignalRChat.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using SignalRChat.Contexts;
 using SignalRChat.Models;
 
 namespace SignalRChat.Repositories;
@@ -28,5 +29,17 @@ public class ChatRepository
             dbContext.ChatUsers.Add(chatUser);
         }
         dbContext.SaveChanges();
+    }
+
+    internal void Remove(string login)
+    {
+
+        using var dbContext = new DataContext();
+        var rm = dbContext.ChatUsers.First(chat => chat.Login == login);
+        if(rm != null)
+        {
+            dbContext.ChatUsers.Remove(rm);
+            dbContext.SaveChanges();
+        }
     }
 }

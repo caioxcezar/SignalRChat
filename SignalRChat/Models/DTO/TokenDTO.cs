@@ -2,7 +2,8 @@
 
 public class TokenDTO
 {
-    public string? Name { get; set; }
+    public DateTime? ValidTo { get; set; }
     public string? Role { get; set; }
     public string? Token { get; set; }
+    public string? RefreshToken { get; set; }
 }

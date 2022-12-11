@@ -2413,11 +2413,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\caioc\\RiderProjects\\SignalRChat\\SignalRChat\\SignalRChat.csproj",
+      "projectUniqueName": "C:\\Users\\caioc\\Source\\Repos\\caioxcezar\\SignalRChat\\SignalRChat\\SignalRChat.csproj",
       "projectName": "SignalRChat",
-      "projectPath": "C:\\Users\\caioc\\RiderProjects\\SignalRChat\\SignalRChat\\SignalRChat.csproj",
+      "projectPath": "C:\\Users\\caioc\\Source\\Repos\\caioxcezar\\SignalRChat\\SignalRChat\\SignalRChat.csproj",
       "packagesPath": "C:\\Users\\caioc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\caioc\\RiderProjects\\SignalRChat\\SignalRChat\\obj\\",
+      "outputPath": "C:\\Users\\caioc\\Source\\Repos\\caioxcezar\\SignalRChat\\SignalRChat\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\caioc\\AppData\\Roaming\\NuGet\\NuGet.Config",

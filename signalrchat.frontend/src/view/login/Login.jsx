@@ -21,7 +21,7 @@ const Login = () => {
       if (response.status > 200) throw "Credencial invalida";
       const json = await response.json();
       localStorage.setItem("token", JSON.stringify(json));
-      navigate("/home");
+      window.location.replace(`${window.location.origin}/home`);
     } catch (e) {
       error(`Não foi possível logar. ${e}`);
     }
