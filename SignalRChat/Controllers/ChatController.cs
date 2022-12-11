@@ -5,6 +5,7 @@ using SignalRChat.Repositories;
 
 namespace SignalRChat.Controllers;
 [Authorize]
+[Route("api/{controller}")]
 public class ChatController : Controller
 {
     private readonly ChatRepository _chatRepository;
@@ -13,7 +14,8 @@ public class ChatController : Controller
     {
         _chatRepository = chatRepository;
     }
-
+    [HttpGet]
+    [Route("getall")]
     public IEnumerable<ChatUserDTO> GetAll()
     {
         var user = User.Identity!.Name!;

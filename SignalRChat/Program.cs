@@ -1,7 +1,6 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using SignalRChat.Contexts;
 using SignalRChat.Hubs;
 using SignalRChat.Repositories;
 using SignalRChat.Services;
@@ -36,7 +35,6 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
@@ -46,12 +44,10 @@ app.UseStaticFiles();
 app.UseAuthentication();
 app.UseRouting();
 app.UseAuthorization();
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-});
 app.MapRazorPages();
-app.MapControllerRoute(name: "default", pattern:"{controller=Login}/{action=Index}/{id?}");
-app.MapHub<ChatHub>("/chatHub");
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller}/{action=Index}/{id?}");
+app.MapHub<ChatHub>("api/chatHub");
 
 app.Run();

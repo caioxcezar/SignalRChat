@@ -6,6 +6,7 @@ using SignalRChat.Services;
 
 namespace SignalRChat.Controllers;
 [AllowAnonymous]
+[Route("api")]
 public class LoginController : Controller
 {
     [HttpPost]
