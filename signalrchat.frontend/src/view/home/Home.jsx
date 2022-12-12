@@ -5,20 +5,26 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { error as toastError } from "../../module/toast";
 import SignalR from "../../module/signalR";
-import { FriendContext } from "../../context/friendContext";
+import { ChatContext } from "../../context/friendContext";
+import { authorizedRequest } from "../../module/fetch";
 
 let connected = false;
 const Home = () => {
   const signalR = SignalR();
-  const [friend, _] = useContext(FriendContext);
+  const { chatReceiver, chatMessages } = useContext(ChatContext);
   const [message, setMessage] = useState("");
   const [menssages, setMessages] = useState([]);
   const [sendDisabled, setSendDisabled] = useState(true);
 
+  useEffect(
+    () => setMessages(chatMessages.map((m) => makeMessage(m.receiver, m.text, m.id))),
+    [chatMessages]
+  );
+
   useEffect(() => {
     (async () => {
       try {
-        if(connected) return;
+        if (connected) return;
         connected = true;
         await signalR.connect();
         signalR.receiveMessage(addMessage);
@@ -30,19 +36,18 @@ const Home = () => {
     })();
   }, []);
 
-  const addMessage = (user, message) => {
-    const li = (
-      <li>
-        {`${user}: ${message}`}
-      </li>
-    );
+  const makeMessage = (user, message, key) => <li key={key}>{`${user}: ${message}`}</li>;
+
+  const addMessage = async (user, message, id) => {
+    if(id) await authorizedRequest(`message/received`, 'POST', id);
+    const li = makeMessage(user, message, id);
     setMessages([...menssages, li]);
   };
 
   const send = async () => {
     try {
-      await signalR.sendMessage(friend, message);
-      addMessage('Me', message);
+      await signalR.sendMessage(chatReceiver, message);
+      await addMessage("Me", message);
     } catch (err) {
       toastError(err);
     }
@@ -52,7 +57,7 @@ const Home = () => {
     <Container>
       <Form>
         <Form.Group>
-          <Form.Label>Message: </Form.Label>
+          <Form.Label>Message To {chatReceiver}: </Form.Label>
           <Form.Control
             type={"text"}
             value={message}
@@ -60,7 +65,11 @@ const Home = () => {
           />
         </Form.Group>
         <div className="d-flex justify-content-center">
-          <Button disabled={sendDisabled} className="w-75 m-2" onClick={send}>
+          <Button
+            disabled={sendDisabled || !chatReceiver}
+            className="w-75 m-2"
+            onClick={send}
+          >
             Send
           </Button>
         </div>

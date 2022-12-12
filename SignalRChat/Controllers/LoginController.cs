@@ -61,5 +61,5 @@ public class LoginController : Controller
     [HttpGet]
     [Route("authenticated")]
     [Authorize]
-    public string Authenticated() => String.Format("Authenticated - {0}", User.Identity!.Name);
+    public string Authenticated() => string.Format("Authenticated - {0}", User.Identity!.Name);
 }

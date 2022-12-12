@@ -11,6 +11,7 @@ ConfigurationService.SetInstance(builder.Configuration);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddTransient(typeof(ChatRepository), typeof(ChatRepository));
+builder.Services.AddTransient(typeof(MessageRepository), typeof(MessageRepository));
 builder.Services.AddSignalR();
 builder.Services.AddAuthentication(options =>
 {

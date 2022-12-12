@@ -6,11 +6,13 @@ namespace SignalRChat.Repositories;
 
 public class ChatRepository
 {
-    public IEnumerable<ChatUser> GetAvailable(string login) {
+    public IEnumerable<ChatUser> GetAvailable(string login)
+    {
         using var dbContext = new DataContext();
         return dbContext.ChatUsers.Where(chat => chat.Login != login).ToList();
     }
-    public ChatUser? Get(string login) {
+    public ChatUser? Get(string login)
+    {
         using var dbContext = new DataContext();
         return dbContext.ChatUsers.FirstOrDefault(chat => chat.Login == login);
     }
@@ -36,7 +38,7 @@ public class ChatRepository
 
         using var dbContext = new DataContext();
         var rm = dbContext.ChatUsers.First(chat => chat.Login == login);
-        if(rm != null)
+        if (rm != null)
         {
             dbContext.ChatUsers.Remove(rm);
             dbContext.SaveChanges();

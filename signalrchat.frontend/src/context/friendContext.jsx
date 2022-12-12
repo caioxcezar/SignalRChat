@@ -1,12 +1,15 @@
 import React, { createContext, useState } from "react";
 
-const FriendContext = createContext();
-const FriendProvider = ({ children }) => {
-  const [friend, setFriend] = useState("");
+const ChatContext = createContext();
+const ChatProvider = ({ children }) => {
+  const [chatReceiver, setChatReceiver] = useState("");
+  const [chatMessages, setChatMessages] = useState([]);
   return (
-    <FriendContext.Provider value={[friend, setFriend]}>
+    <ChatContext.Provider
+      value={{ chatReceiver, setChatReceiver, chatMessages, setChatMessages }}
+    >
       {children}
-    </FriendContext.Provider>
+    </ChatContext.Provider>
   );
 };
-export { FriendContext, FriendProvider };
+export { ChatContext, ChatProvider };

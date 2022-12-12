@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SignalRChat.Models;
 using SignalRChat.Models.DTO;
 using SignalRChat.Repositories;
 
@@ -15,7 +16,7 @@ public class ChatController : Controller
         _chatRepository = chatRepository;
     }
     [HttpGet]
-    [Route("getall")]
+    [Route("all")]
     public IEnumerable<ChatUserDTO> GetAll()
     {
         var user = User.Identity!.Name!;

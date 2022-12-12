@@ -1,16 +1,24 @@
 import { useContext, useEffect, useState } from "react";
 import { ListGroup } from "react-bootstrap";
-import { FriendContext } from "../../context/friendContext";
+import { ChatContext } from "../../context/friendContext";
 import { authorizedRequest } from "../../module/fetch";
 import { error } from "../../module/toast";
 
 const Friends = () => {
   const [friends, setFriends] = useState([]);
-  const [friend, setFriend] = useContext(FriendContext);
+  const { setChatReceiver, setChatMessages } = useContext(ChatContext);
+
+  const onClick = async (friend) => {
+    setChatReceiver(friend);
+    const response = await authorizedRequest(`message/messages/${friend}`);
+    if(response.status > 200) return;
+    const json = await response.json();
+    setChatMessages(json);
+  };
 
   const getContacts = async () => {
     try {
-      const response = await authorizedRequest(`chat/getall`, "GET");
+      const response = await authorizedRequest(`chat/all`, "GET");
       if (response.status > 200) return;
       const json = await response.json();
       if (json.length == 0) return;
@@ -19,7 +27,7 @@ const Friends = () => {
           <ListGroup.Item
             action
             key={op.connectionId}
-            onClick={() => setFriend(op.name)}
+            onClick={() => onClick(op.name)}
           >
             {op.name}
           </ListGroup.Item>
@@ -36,7 +44,7 @@ const Friends = () => {
 
   return (
     <div className="mt-2">
-      Friends: {friend}
+      Friends:
       <ListGroup variant="flush">{friends}</ListGroup>
     </div>
   );

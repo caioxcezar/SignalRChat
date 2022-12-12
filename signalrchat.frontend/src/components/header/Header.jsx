@@ -11,8 +11,6 @@ const Header = React.forwardRef((_, ref) => {
     localStorage.clear();
     window.location.replace(window.location.origin);
   };
-  const config = localStorage.getItem("token");
-  if (!config) return <div ref={ref}></div>;
   return (
     <Navbar bg="dark" expand="lg" variant="dark" ref={ref}>
       <Container>
