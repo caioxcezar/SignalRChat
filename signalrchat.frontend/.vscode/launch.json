@@ -2,16 +2,16 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "firefox",
+      "type": "chrome",
       "request": "launch",
-      "name": "Firefox",
+      "name": "Chrome",
       "url": "https://localhost:3000",
       "webRoot": "${workspaceFolder}"
     },
     {
-      "type": "chrome",
+      "type": "firefox",
       "request": "launch",
-      "name": "Chrome",
+      "name": "Firefox",
       "url": "https://localhost:3000",
       "webRoot": "${workspaceFolder}"
     }

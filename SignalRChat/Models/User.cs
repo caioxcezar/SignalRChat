@@ -8,12 +8,12 @@ public class User
 {
     [Key]
     [Column(TypeName = "nvarchar(20)")]
-    public string Login { get; set; }
+    public string Login { get; set; } = "";
 
-    [Column(TypeName = "nvarchar(250)")] public string Name { get; set; }
-    [Column(TypeName = "nvarchar(50)")] public string Password { get; set; }
-    [Column(TypeName = "varchar(100)")] public string Role { get; set; }
-    [Column(TypeName = "varchar(50)")] public string RefreshToken { get; set; }
+    [Column(TypeName = "nvarchar(250)")] public string Name { get; set; } = "";
+    [Column(TypeName = "nvarchar(50)")] public string Password { get; set; } = "";
+    [Column(TypeName = "varchar(100)")] public string Role { get; set; } = "";
+    [Column(TypeName = "varchar(50)")] public string RefreshToken { get; set; } = "";
     [Column] public DateTime Created { get; set; }
     [Column] public DateTime Updated { get; set; }
 

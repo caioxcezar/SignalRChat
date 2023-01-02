@@ -9,11 +9,11 @@ namespace SignalRChat.Models
         [Key]
         public int Id { get; set; }
         [Column(TypeName = "nvarchar(20)")]
-        public string Sender { get; set; }
+        public string Sender { get; set; } = "";
         [Column(TypeName = "nvarchar(20)")]
-        public string Receiver { get; set; }
+        public string Receiver { get; set; } = "";
         [Column(TypeName = "nvarchar(516)")]
-        public string Text { get; set; }
+        public string Text { get; set; } = "";
         [Column]
         public DateTime Created { get; set; }
         [Column]

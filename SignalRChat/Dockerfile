@@ -1,20 +1,15 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
-EXPOSE 80
-EXPOSE 443
-
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["SignalRChat/SignalRChat.csproj", "SignalRChat/"]
-RUN dotnet restore "SignalRChat/SignalRChat.csproj"
+﻿FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /SignalRChat
+# restores nuget packages
+COPY *.csproj .
+RUN dotnet restore
+# copy source code
 COPY . .
-WORKDIR "/src/SignalRChat"
-RUN dotnet build "SignalRChat.csproj" -c Release -o /app/build
-
-FROM build AS publish
-RUN dotnet publish "SignalRChat.csproj" -c Release -o /app/publish
-
-FROM base AS final
+# builds the source code using the SDK
+RUN dotnet publish -c release -o /executable --no-restore
+# runs the deployable on a separate image
+# that is shipped with the .NET Runtime
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build /executable .
 ENTRYPOINT ["dotnet", "SignalRChat.dll"]

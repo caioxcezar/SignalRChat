@@ -17,9 +17,9 @@ public class ChatController : Controller
     }
     [HttpGet]
     [Route("all")]
-    public IEnumerable<ChatUserDTO> GetAll()
+    public IEnumerable<ChatUserDto> GetAll()
     {
         var user = User.Identity!.Name!;
-        return _chatRepository.GetAvailable(user).Select(ChatUserDTO.Build);
+        return _chatRepository.GetAvailable(user).Select(ChatUserDto.Build);
     }
 }
