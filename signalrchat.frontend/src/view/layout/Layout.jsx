@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import Header from "../../components/header";
-import { Col, Container, Row } from "react-bootstrap";
 import Friends from "../../components/friends";
 import { ChatProvider } from "../../context/friendContext";
+import './style.scss';
 
 const Layout = ({ children }) => {
   const [height, setHeight] = useState(0);
@@ -15,23 +15,26 @@ const Layout = ({ children }) => {
     setHeight(`calc(100vh - ${header}px`);
   }, [refHeader.current]);
   const config = localStorage.getItem("token");
+  const theme = localStorage.getItem("colorScheme") === "light" ? "light" : "dark";
   return (
-    <ChatProvider>
+    <div className={`theme-${theme}`}>
+      <ChatProvider>
       {config ? <Header ref={refHeader} /> : <></>}
       <ToastContainer />
-      <Container fluid>
+      <div className="main-container" style={{ height: height }}>
         {config ? (
-          <Row>
-            <Col xs={10}>{children}</Col>
-            <Col style={{ height: height }} className="border-start">
+          <>
+            <div className="content-container">{children}</div>
+            <div className="border-start">
               <Friends />
-            </Col>
-          </Row>
+            </div>
+          </>
         ) : (
           children
         )}
-      </Container>
-    </ChatProvider>
+        </div>
+      </ChatProvider>
+    </div>
   );
 };
 

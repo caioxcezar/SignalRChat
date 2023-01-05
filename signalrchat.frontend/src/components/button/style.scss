@@ -1,0 +1,67 @@
+@import '../../styles/variables.scss';
+
+.button {
+    border-radius: 1rem;
+    border: 0;
+    transition: $transition;
+    margin: .5rem 0;
+    padding: 0.5rem;
+}
+
+.button-primary {
+    @include themify($themes) {
+        background-color: themed("primary");
+        color: themed("onPrimary");
+    }
+}
+.button-secondary {
+    @include themify($themes) {
+        background-color: themed("secondary");
+        color: themed("onSecondary");
+    }
+}
+.button-tertiary {
+    @include themify($themes) {
+        background-color: themed("tertiary");
+        color: themed("onTertiary");
+    }
+}
+.button-error {
+    @include themify($themes) {
+        background-color: themed("error");
+        color: themed("onError");
+    }
+}
+
+.button:hover {
+    border-radius: .5rem;
+}
+
+.button-primary:hover {
+    @include themify($themes) {
+        background-color: themed("onPrimary");
+        color: themed("primary");
+    }
+}
+.button-secondary:hover {
+    @include themify($themes) {
+        background-color: themed("onSecondary");
+        color: themed("secondary");
+    }
+}
+.button-tertiary:hover {
+    @include themify($themes) {
+        background-color: themed("onTertiary");
+        color: themed("tertiary");
+    }
+}
+.button-error:hover {
+    @include themify($themes) {
+        background-color: themed("onError");
+        color: themed("error");
+    }
+}
+
+.button-text {
+    margin: .2rem;
+}

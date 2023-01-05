@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
-import Stack from "react-bootstrap/Stack";
-import Form from "react-bootstrap/Form";
 import { request } from "../../module/fetch";
 import { warning, error, sucess, info } from "../../module/toast";
 import { useNavigate } from "react-router-dom";
+import Input from "../../components/input";
+import Button from "../../components/button";
+import Select from "../../components/select";
+import "./style.scss";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ const Register = () => {
       sucess("Successfully registered");
       navigate(`/`);
     } catch (e) {
-        error(`Não foi possível logar. ${e}`);
+      error(`Não foi possível logar. ${e}`);
     }
   };
 
@@ -46,57 +46,53 @@ const Register = () => {
   };
 
   return (
-    <Container className="align-middle">
-      <Form>
-        <Form.Group>
-          <Form.Label>Login: </Form.Label>
-          <Stack direction="horizontal" gap={3}>
-            <Form.Control
-              isInvalid={isInvalid}
-              type={"text"}
-              value={login}
-              onChange={({ target }) => setLogin(target.value)}
-            />
-            <Button onClick={checkIsAvailable}>Check</Button>
-          </Stack>
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Email: </Form.Label>
-          <Form.Control
-            type={"email"}
-            value={email}
-            isInvalid={!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)}
-            onChange={({ target }) => setEmail(target.value)}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Name: </Form.Label>
-          <Form.Control
-            type={"text"}
-            value={name}
-            onChange={({ target }) => setName(target.value)}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Password: </Form.Label>
-          <Form.Control
-            type={"password"}
-            value={password}
-            onChange={({ target }) => setPassword(target.value)}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Role: </Form.Label>
-          <Form.Select onChange={({ target }) => setRole(target.value)}>
-            <option value="client">Client</option>
-            <option value="dev">Developer</option>
-          </Form.Select>
-        </Form.Group>
-      </Form>
-      <div className="d-flex justify-content-center">
-        <Button className="w-75 m-2" onClick={registerUser}>Register</Button>
+    <div className="register-container">
+      <div className="title-register">Create a new account</div>
+      <div className="group-login">
+        <Input
+          isInvalid={isInvalid}
+          className={"w-100 me-2"}
+          type={"text"}
+          label={"Login "}
+          value={login}
+          onChange={setLogin}
+        />
+        <Button onClick={checkIsAvailable} text={"Check"} />
       </div>
-    </Container>
+      <Input
+        className={"d-grid"}
+        type={"text"}
+        label={"Email "}
+        isInvalid={!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)}
+        value={email}
+        onChange={setEmail}
+      />
+      <Input
+        className={"d-grid"}
+        type={"text"}
+        label={"Name "}
+        value={name}
+        onChange={setName}
+      />
+      <Input
+        className={"d-grid"}
+        type={"text"}
+        label={"Password "}
+        value={password}
+        onChange={setPassword}
+      />
+      <Select
+        text={"Role"}
+        value={role}
+        className={"d-grid"}
+        onChange={setRole}
+        options={[
+          ["client", "Client"],
+          ["dev", "Developer"],
+        ]}
+      />
+      <Button className="w-100" onClick={registerUser} text={"Register"} />
+    </div>
   );
 };
 

@@ -1,43 +1,31 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMessage } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import Button from "../button";
+import Input from "../input";
+import "./style.scss";
 
 const Header = React.forwardRef((_, ref) => {
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("");
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.clear();
     window.location.replace(window.location.origin);
   };
   return (
-    <Navbar bg="dark" expand="lg" variant="dark" ref={ref}>
-      <Container>
-        <Navbar.Brand href="/">SignalR Chat</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="/home">Home</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-        <Navbar.Collapse className="justify-content-center">
-          <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-              value={search}
-              onChange={({ target }) => setSearch(target.value)}
-            />
-        </Navbar.Collapse>
-        <Navbar.Collapse className="justify-content-end">
-          <Button variant="outline-success" onClick={logout}>
-            Logout
-          </Button>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <div ref={ref} className="header">
+      <a href="/home" className="home-icon header-element">
+        <FontAwesomeIcon icon={faMessage} />
+      </a>
+      <Input
+        className="input-search header-element"
+        type={"text"}
+        label="Search"
+        value={search}
+        onChange={setSearch}
+      />
+      <Button className="header-element" onClick={logout} text={"Logout"} />
+    </div>
   );
 });
 

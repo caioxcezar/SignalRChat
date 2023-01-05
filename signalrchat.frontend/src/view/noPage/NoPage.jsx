@@ -1,5 +1,3 @@
-import Container from "react-bootstrap/Container";
-
-const NoPage = () => <Container>Pagina invalida. </Container>
+const NoPage = () => <div>Pagina invalida. </div>;
 
 export default NoPage;

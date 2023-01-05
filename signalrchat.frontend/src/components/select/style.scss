@@ -1,0 +1,74 @@
+@import '../../styles/variables.scss';
+
+.error {
+    @include themify($themes) {
+        color: themed("error") !important;
+    }
+}
+
+.select-container {
+    display: flex;
+}
+
+.select-error {
+    @include themify($themes) {
+        border: .1rem solid themed("error") !important;
+    }
+}
+
+.select {
+    @include themify($themes) {
+        background-color: themed("background");
+        color: themed("primary");
+        border: .1rem solid themed("primary");
+    }
+
+    margin: .5rem 0;
+    border-radius: 1rem;
+    padding: .5rem;
+    transition: $transition;
+    z-index: 1;
+}
+
+.select:focus {
+    outline: none;
+    border-radius: .5rem;
+}
+
+.select-with-value {
+    @include themify($themes) {
+        color: themed("primary");
+    }
+    
+    transition: $transition;
+    position: absolute;
+    padding: 0 .5rem 0 .5rem;
+    font-size: .8rem;
+    z-index: 2;
+}
+
+.select-label-container {
+    user-select: none;
+    padding: 1rem 0 .1rem .5rem;
+    z-index: 2;
+    transition: $transition;
+    cursor: text;
+    position: absolute;
+}
+
+.select-label {
+    @include themify($themes) {
+        background-color: themed("background");
+    }
+    display: inline;
+}
+
+.select:focus~.select-label-container {
+    @include themify($themes) {
+        color: themed("primary");
+    }
+    
+    font-weight: bold;
+    padding: 0 .5rem 0 .5rem;
+    font-size: .8rem;
+}

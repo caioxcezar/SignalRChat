@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { ListGroup } from "react-bootstrap";
 import { ChatContext } from "../../context/friendContext";
 import { authorizedRequest } from "../../module/fetch";
 import { error } from "../../module/toast";
@@ -11,7 +10,7 @@ const Friends = () => {
   const onClick = async (friend) => {
     setChatReceiver(friend);
     const response = await authorizedRequest(`message/messages/${friend}`);
-    if(response.status > 200) return;
+    if (response.status > 200) return;
     const json = await response.json();
     setChatMessages(json);
   };
@@ -24,13 +23,9 @@ const Friends = () => {
       if (json.length == 0) return;
       setFriends(
         json.map((op) => (
-          <ListGroup.Item
-            action
-            key={op.connectionId}
-            onClick={() => onClick(op.name)}
-          >
+          <li action key={op.connectionId} onClick={() => onClick(op.name)}>
             {op.name}
-          </ListGroup.Item>
+          </li>
         ))
       );
     } catch (err) {
@@ -45,7 +40,7 @@ const Friends = () => {
   return (
     <div className="mt-2">
       Friends:
-      <ListGroup variant="flush">{friends}</ListGroup>
+      <ul>{friends}</ul>
     </div>
   );
 };

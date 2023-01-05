@@ -1,8 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import { error as toastError } from "../../module/toast";
 import SignalR from "../../module/signalR";
 import { ChatContext } from "../../context/friendContext";
@@ -53,33 +49,33 @@ const Home = () => {
     }
   };
 
-  return (
-    <Container>
-      <Form>
-        <Form.Group>
-          <Form.Label>Message To {chatReceiver}: </Form.Label>
-          <Form.Control
-            type={"text"}
-            value={message}
-            onChange={({ target }) => setMessage(target.value)}
-          />
-        </Form.Group>
-        <div className="d-flex justify-content-center">
-          <Button
-            disabled={sendDisabled || !chatReceiver}
-            className="w-75 m-2"
-            onClick={send}
-          >
-            Send
-          </Button>
-        </div>
-        <Row>
-          <div className="col-6">
-            <ul id="messagesList">{menssages}</ul>
-          </div>
-        </Row>
-      </Form>
-    </Container>
+  return (<></>
+    // <Container>
+    //   <Form>
+    //     <Form.Group>
+    //       <Form.Label>Message To {chatReceiver}: </Form.Label>
+    //       <Form.Control
+    //         type={"text"}
+    //         value={message}
+    //         onChange={({ target }) => setMessage(target.value)}
+    //       />
+    //     </Form.Group>
+    //     <div className="d-flex justify-content-center">
+    //       <Button
+    //         disabled={sendDisabled || !chatReceiver}
+    //         className="w-75 m-2"
+    //         onClick={send}
+    //       >
+    //         Send
+    //       </Button>
+    //     </div>
+    //     <Row>
+    //       <div className="col-6">
+    //         <ul id="messagesList">{menssages}</ul>
+    //       </div>
+    //     </Row>
+    //   </Form>
+    // </Container>
   );
 };
 

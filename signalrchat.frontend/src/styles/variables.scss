@@ -1,0 +1,76 @@
+$themes: (light: (primary: #00658d,
+        onPrimary: #ffffff,
+        primaryContainer: #c6e7ff,
+        onPrimaryContainer: #001e2d,
+        secondary: #4f616d,
+        onSecondary: #ffffff,
+        secondaryContainer: #d2e5f4,
+        onSecondaryContainer: #0a1e28,
+        tertiary: #62597c,
+        onTertiary: #ffffff,
+        tertiaryContainer: #e8deff,
+        onTertiaryContainer: #1e1735,
+        error: #ba1a1a,
+        onError: #ffffff,
+        errorContainer: #ffdad6,
+        onErrorContainer: #410002,
+        background: #fbfcff,
+        onBackground: #191c1e,
+        surface: #fbfcff,
+        onSurface: #191c1e,
+        outline: #71787e,
+        surfaceVariant: #dde3ea,
+        onSurfaceVariant: #41484d,
+    ),
+    dark: (primary: #81cfff,
+        onPrimary: #00344b,
+        primaryContainer: #004c6b,
+        onPrimaryContainer: #c6e7ff,
+        secondary: #b6c9d8,
+        onSecondary: #21333e,
+        secondaryContainer: #374955,
+        onSecondaryContainer: #d2e5f4,
+        tertiary: #ccc1e9,
+        onTertiary: #332c4c,
+        tertiaryContainer: #4a4263,
+        onTertiaryContainer: #e8deff,
+        error: #ffb4ab,
+        onError: #690005,
+        errorContainer: #93000a,
+        onErrorContainer: #ffdad6,
+        background: #191c1e,
+        onBackground: #e2e2e5,
+        surface: #191c1e,
+        onSurface: #e2e2e5,
+        outline: #8b9298,
+        surfaceVariant: #41484d,
+        onSurfaceVariant: #c1c7ce,
+    ),
+);
+
+$transition: 0.3s;
+
+@mixin themify($themes) {
+
+    @each $theme,
+    $map in $themes {
+        .theme-#{$theme} & {
+            $theme-map: () !global;
+
+            @each $key,
+            $submap in $map {
+                $value: map-get(map-get($themes, $theme), '#{$key}');
+                $theme-map: map-merge($theme-map,
+                        ($key: $value,
+                        )) !global;
+            }
+
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}
